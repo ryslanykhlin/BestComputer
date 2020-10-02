@@ -20,23 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ea39995-c85e-4087-84ba-1c259dae3068" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Catalog.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Category.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/plugins/vuex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/plugins/vuexmodule/product.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Basket.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/plugins/vuexmodule/basket.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Container.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Container.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Category.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Category.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Part/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Part/Navbar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/plugins/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/plugins/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/plugins/vuex.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/plugins/vuex.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,6 +200,8 @@
       <workItem from="1601528774124" duration="29041000" />
       <workItem from="1601579073265" duration="3302000" />
       <workItem from="1601619495239" duration="6000" />
+      <workItem from="1601645733650" duration="14003000" />
+      <workItem from="1601664430352" duration="1699000" />
     </task>
     <servers />
   </component>

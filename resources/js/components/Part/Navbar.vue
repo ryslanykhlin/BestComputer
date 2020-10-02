@@ -1,6 +1,5 @@
 <template>
     <nav class="nav">
-
         <v-app-bar app>
             <v-toolbar-title>BestComputer</v-toolbar-title>
             <v-spacer/>
@@ -9,6 +8,13 @@
                     {{item.title}}
                 </v-btn>
             </v-toolbar-items>
+            <router-link to="/basket">
+                <v-badge overlap :content="String(basketCount)">
+                    <v-icon large>
+                        mdi-basket
+                    </v-icon>
+                </v-badge>
+            </router-link>
             <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = true"/>
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" app disable-resize-watcher>
@@ -22,6 +28,11 @@
 <script>
 export default {
     name: "Navbar",
+    computed:{
+        basketCount(){
+            return this.$store.getters.getbasketCount
+        },
+    },
     data:()=>{
         return {
             drawer:false,

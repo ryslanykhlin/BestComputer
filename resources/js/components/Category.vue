@@ -10,6 +10,7 @@
                         <v-card-text>{{product.description}}</v-card-text>
                         <v-card-subtitle>{{product.price}}</v-card-subtitle>
                         <v-divider class="mx-4"/>
+                        <v-btn @click="addProductBasket(product)">Добавить в Корзину</v-btn>
                     </v-card>
                 </v-col>
             </v-row>
@@ -22,10 +23,14 @@ import router from "../plugins/router";
 
 export default {
     name: "Category",
-
     computed:{
         products(){
             return this.$store.getters.getProducts
+        }
+    },
+    methods:{
+        addProductBasket(product){
+            this.$store.dispatch('addProductItem',product)
         }
     },
     mounted() {

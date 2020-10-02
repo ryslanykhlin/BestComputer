@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 
 import Catalog from "../components/Catalog";
 import Category from "../components/Category";
+import Basket from "../components/Basket";
 const About = {template:'<div>About</div>'}
 const Contest = {template:'<div>Contest</div>'}
 
@@ -30,6 +31,10 @@ export default new VueRouter({
         {
             path:'/contest',
             component:Contest
+        },
+        {
+            path:'/basket',
+            component:Basket
         },
     ]
 })
