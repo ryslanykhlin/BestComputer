@@ -9,19 +9,13 @@
                     {{item.title}}
                 </v-btn>
             </v-toolbar-items>
-            <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = !drawer"/>
+            <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = true"/>
         </v-app-bar>
-
-        <v-navigation-drawer disable-resize-watcher v-model="drawer" absolute temporary>
-            <v-list nav dense link>
-                <v-list-item-group v-model="drawer">
-                    <v-list-item v-for="(item,index) in navBarItems" :key="index" :to="item.to" @click="drawer = false">
-                        <v-list-item-title>{{item.title}}</v-list-item-title>
-                    </v-list-item>
-                </v-list-item-group>
-            </v-list>
+        <v-navigation-drawer v-model="drawer" app disable-resize-watcher>
+            <v-btn v-for="(item,index) in navBarItems" :key="index" text :to="item.to" @click="drawer = false">
+                {{item.title}}
+            </v-btn>
         </v-navigation-drawer>
-
     </nav>
 </template>
 
@@ -30,18 +24,20 @@ export default {
     name: "Navbar",
     data:()=>{
         return {
+            drawer:false,
             navBarItems:[
                 {title:'Главная',to:'/'},
-                {title:'Контакты',to:'/contact'},
+                {title:'Каталог',to:'/category'},
                 {title:'О нас',to:'/about'},
                 {title:'Конкурсы',to:'/contest'},
-            ],
-            drawer:false
+            ]
         }
     }
 }
 </script>
 
 <style scoped>
-
+    .posFix{
+        position: fixed;
+    }
 </style>

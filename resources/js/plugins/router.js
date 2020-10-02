@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const Home = {template:'<div>Home</div>'}
-const Contant = {template:'<div>Contant</div>'}
+import Catalog from "../components/Catalog";
+import Category from "../components/Category";
 const About = {template:'<div>About</div>'}
 const Contest = {template:'<div>Contest</div>'}
 
@@ -16,8 +16,12 @@ export default new VueRouter({
             component:()=>import('../components/Home')
         },
         {
-            path:'/contact',
-            component:Contant
+            path:'/category',
+            component:Catalog
+        },
+        {
+            path:'/category/:category',
+            component:Category
         },
         {
             path:'/about',

@@ -15,8 +15,94 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Home"
+  name: "Home",
+  data: function data() {
+    return {
+      items: [{
+        src: 'https://www.tokkoro.com/picsup/5721188-pc-gaming-hd-wallpapers.jpg'
+      }, {
+        src: 'https://static.razer.ru/media/offers/razer-kraken-te-gaming-headset-hero.jpg'
+      }, {
+        src: 'https://geek.md/wp-content/uploads/2020/01/RZ03-03080100-R3M1-Razer-Huntsman-Tournament-Edition-7.jpg'
+      }, {
+        src: 'https://apac.coolermaster.com/tw/assets/products/mastercase-h500p/wallpaper/Wallpaper_4k_H500P_1.jpg'
+      }],
+      GalleryItems: [{
+        src: 'https://bestmarka.ru/wp-content/uploads/2020/07/s1200.jpg'
+      }, {
+        src: 'https://bestmarka.ru/wp-content/uploads/2020/07/s1200.jpg'
+      }, {
+        src: 'https://bestmarka.ru/wp-content/uploads/2020/07/s1200.jpg'
+      }, {
+        src: 'https://bestmarka.ru/wp-content/uploads/2020/07/s1200.jpg'
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -36,7 +122,224 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    Home\n")])
+  return _c(
+    "div",
+    [
+      _c(
+        "v-carousel",
+        {
+          attrs: {
+            cycle: "",
+            "delimiter-icon": "mdi-minus",
+            "hide-delimiter-background": ""
+          }
+        },
+        _vm._l(_vm.items, function(item, index) {
+          return _c("v-carousel-item", { key: index, attrs: { src: item.src } })
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "reviews mb-10" },
+        [
+          _c(
+            "div",
+            { staticClass: "reviews__title text-h2 mb-10 mt-5 text-center" },
+            [_vm._v("Отзывы наших посетителей")]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-carousel",
+            { attrs: { "hide-delimiters": "", height: "150px", light: "" } },
+            [
+              _c(
+                "v-carousel-item",
+                [
+                  _c(
+                    "v-sheet",
+                    { attrs: { height: "100%" } },
+                    [
+                      _c(
+                        "v-container",
+                        [
+                          _c(
+                            "v-row",
+                            [
+                              _c("v-col", [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "reviews__name text-h4 text-center mb-5"
+                                  },
+                                  [_vm._v("Егор")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "reviews__desrc text-subtitle-1 text-center"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Lorem ipsum dolor sit\n                                    amet, consectetur adipisicing elit. At aut dignissimos enim qui quis.\n                                    Amet autem id ullam! Dicta quo, voluptates! Fugiat illum impedit nostrum\n                                    odio quam ullam veniam? Tempore!"
+                                    )
+                                  ]
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-carousel-item",
+                [
+                  _c(
+                    "v-sheet",
+                    { attrs: { height: "100%" } },
+                    [
+                      _c(
+                        "v-container",
+                        [
+                          _c(
+                            "v-row",
+                            [
+                              _c("v-col", [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "reviews__name text-h4 text-center mb-5"
+                                  },
+                                  [_vm._v("Егор")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "reviews__desrc text-subtitle-1 text-center"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Lorem ipsum dolor sit\n                                    amet, consectetur adipisicing elit. At aut dignissimos enim qui quis.\n                                    Amet autem id ullam! Dicta quo, voluptates! Fugiat illum impedit nostrum\n                                    odio quam ullam veniam? Tempore!"
+                                    )
+                                  ]
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-carousel-item",
+                [
+                  _c(
+                    "v-sheet",
+                    { attrs: { height: "100%" } },
+                    [
+                      _c(
+                        "v-container",
+                        [
+                          _c(
+                            "v-row",
+                            [
+                              _c("v-col", [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "reviews__name text-h4 text-center mb-5"
+                                  },
+                                  [_vm._v("Егор")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "reviews__desrc text-subtitle-1 text-center"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Lorem ipsum dolor sit\n                                    amet, consectetur adipisicing elit. At aut dignissimos enim qui quis.\n                                    Amet autem id ullam! Dicta quo, voluptates! Fugiat illum impedit nostrum\n                                    odio quam ullam veniam? Tempore!"
+                                    )
+                                  ]
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "gallery" },
+        [
+          _c(
+            "v-container",
+            [
+              _c(
+                "v-row",
+                _vm._l(_vm.GalleryItems, function(item, index) {
+                  return _c(
+                    "v-col",
+                    { key: index, attrs: { cols: "12", sm: "6", md: "4" } },
+                    [
+                      _c("v-img", {
+                        staticClass: "gallery__img",
+                        attrs: { src: item.src }
+                      })
+                    ],
+                    1
+                  )
+                }),
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
