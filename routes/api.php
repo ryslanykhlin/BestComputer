@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 //product
 Route::apiResource('products','App\Http\Controllers\productController');
+
+Route::prefix('auth')->group(function() {
+
+    //register
+    Route::post('register', 'App\Http\Controllers\AuthController@register');
+
+    //login
+    Route::post('login', 'App\Http\Controllers\AuthController@login');
+
+    //is auth
+    Route::post('user', 'App\Http\Controllers\AuthController@user');
+});
