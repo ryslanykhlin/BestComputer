@@ -2091,6 +2091,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2102,31 +2108,34 @@ __webpack_require__.r(__webpack_exports__);
       log_password: ""
     };
   },
-  mounted: function mounted() {
-    axios.post("/api/auth/user", {}, {
-      headers: {
-        Authorization: "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYwMTkwNDI1MiwiZXhwIjoxNjAxOTA3ODUyLCJuYmYiOjE2MDE5MDQyNTIsImp0aSI6InNMakZuU0k0dE5ZeDAxTTAiLCJzdWIiOjMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.s05SNwVQ2E0Z-aEQH5gO7yNhr4Jor_mVKxGU1YrQJdo"
+  computed: {
+    token: function token() {
+      return this.$store.getters.getToken;
+    },
+    getInfoUser: function getInfoUser() {
+      if (this.$store.getters.getToken !== null) {
+        if (this.$store.getters.getUserInfo === null) {
+          this.$store.dispatch("user", this.token);
+        }
+
+        return this.$store.getters.getUserInfo;
       }
-    }).then(function (res) {
-      return console.log(res);
-    });
+
+      return null;
+    }
   },
   methods: {
     register: function register() {
-      axios.post("/api/auth/register", {
+      this.$store.dispatch("register", {
         name: this.reg_name,
         email: this.reg_email,
         password: this.reg_password
-      }).then(function (res) {
-        return console.log(res);
       });
     },
     login: function login() {
-      axios.post("/api/auth/login", {
+      this.$store.dispatch("login", {
         email: this.log_email,
         password: this.log_password
-      }).then(function (res) {
-        return console.log(res);
       });
     }
   }
@@ -2182,15 +2191,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     basketItems: function basketItems() {
       return this.$store.getters.getBasketItem;
+    },
+    basketisNull: function basketisNull() {
+      return this.$store.getters.getBasketItem.length > 0;
+    },
+    token: function token() {
+      return this.$store.getters.getToken;
     }
   },
   methods: {
     deleteItemBasket: function deleteItemBasket(index) {
-      this.$store.dispatch('deleteProductItem', index);
+      this.$store.dispatch("deleteProductItem", index);
     }
   }
 });
@@ -20855,165 +20879,175 @@ var render = function() {
     "section",
     { staticClass: "auth" },
     [
-      _c(
-        "v-tabs",
-        {
-          attrs: { centered: "" },
-          model: {
-            value: _vm.tab,
-            callback: function($$v) {
-              _vm.tab = $$v
-            },
-            expression: "tab"
-          }
-        },
-        [
-          _c("v-tabs-slider"),
-          _vm._v(" "),
-          _c("v-tab", [_vm._v(" Авторизация ")]),
-          _vm._v(" "),
-          _c("v-tab", [_vm._v(" Регистрация ")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-tabs-items",
-        {
-          model: {
-            value: _vm.tab,
-            callback: function($$v) {
-              _vm.tab = $$v
-            },
-            expression: "tab"
-          }
-        },
-        [
-          _c(
-            "v-tab-item",
-            [
-              _c(
-                "v-form",
-                { staticStyle: { width: "500px", margin: "0 auto" } },
-                [
-                  _c(
-                    "v-text-field",
-                    {
-                      attrs: { label: "почта" },
-                      model: {
-                        value: _vm.log_email,
-                        callback: function($$v) {
-                          _vm.log_email = $$v
-                        },
-                        expression: "log_email"
-                      }
-                    },
-                    [_vm._v("Почта")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-text-field",
-                    {
-                      attrs: { label: "пароль", type: "password" },
-                      model: {
-                        value: _vm.log_password,
-                        callback: function($$v) {
-                          _vm.log_password = $$v
-                        },
-                        expression: "log_password"
-                      }
-                    },
-                    [_vm._v("Пароль")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      staticClass: "mr-4",
-                      attrs: { color: "success" },
-                      on: { click: _vm.login }
-                    },
-                    [_vm._v("Войти")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-tab-item",
-            [
-              _c(
-                "v-form",
-                { staticStyle: { width: "500px", margin: "0 auto" } },
-                [
-                  _c(
-                    "v-text-field",
-                    {
-                      attrs: { label: "имя" },
-                      model: {
-                        value: _vm.reg_name,
-                        callback: function($$v) {
-                          _vm.reg_name = $$v
-                        },
-                        expression: "reg_name"
-                      }
-                    },
-                    [_vm._v("Имя")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-text-field",
-                    {
-                      attrs: { label: "почта" },
-                      model: {
-                        value: _vm.reg_email,
-                        callback: function($$v) {
-                          _vm.reg_email = $$v
-                        },
-                        expression: "reg_email"
-                      }
-                    },
-                    [_vm._v("Почта")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-text-field",
-                    {
-                      attrs: { label: "пароль", type: "password" },
-                      model: {
-                        value: _vm.reg_password,
-                        callback: function($$v) {
-                          _vm.reg_password = $$v
-                        },
-                        expression: "reg_password"
-                      }
-                    },
-                    [_vm._v("Пароль")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      staticClass: "mr-4",
-                      attrs: { color: "success" },
-                      on: { click: _vm.register }
-                    },
-                    [_vm._v("Зарегистрироваться")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
+      !_vm.token
+        ? [
+            _c(
+              "v-tabs",
+              {
+                attrs: { centered: "" },
+                model: {
+                  value: _vm.tab,
+                  callback: function($$v) {
+                    _vm.tab = $$v
+                  },
+                  expression: "tab"
+                }
+              },
+              [
+                _c("v-tabs-slider"),
+                _vm._v(" "),
+                _c("v-tab", [_vm._v(" Авторизация ")]),
+                _vm._v(" "),
+                _c("v-tab", [_vm._v(" Регистрация ")])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "v-tabs-items",
+              {
+                model: {
+                  value: _vm.tab,
+                  callback: function($$v) {
+                    _vm.tab = $$v
+                  },
+                  expression: "tab"
+                }
+              },
+              [
+                _c(
+                  "v-tab-item",
+                  [
+                    _c(
+                      "v-form",
+                      { staticStyle: { width: "500px", margin: "0 auto" } },
+                      [
+                        _c(
+                          "v-text-field",
+                          {
+                            attrs: { label: "почта" },
+                            model: {
+                              value: _vm.log_email,
+                              callback: function($$v) {
+                                _vm.log_email = $$v
+                              },
+                              expression: "log_email"
+                            }
+                          },
+                          [_vm._v("Почта")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-text-field",
+                          {
+                            attrs: { label: "пароль", type: "password" },
+                            model: {
+                              value: _vm.log_password,
+                              callback: function($$v) {
+                                _vm.log_password = $$v
+                              },
+                              expression: "log_password"
+                            }
+                          },
+                          [_vm._v("Пароль")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "mr-4",
+                            attrs: { color: "success" },
+                            on: { click: _vm.login }
+                          },
+                          [_vm._v("Войти")]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-tab-item",
+                  [
+                    _c(
+                      "v-form",
+                      { staticStyle: { width: "500px", margin: "0 auto" } },
+                      [
+                        _c(
+                          "v-text-field",
+                          {
+                            attrs: { label: "имя" },
+                            model: {
+                              value: _vm.reg_name,
+                              callback: function($$v) {
+                                _vm.reg_name = $$v
+                              },
+                              expression: "reg_name"
+                            }
+                          },
+                          [_vm._v("Имя")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-text-field",
+                          {
+                            attrs: { label: "почта" },
+                            model: {
+                              value: _vm.reg_email,
+                              callback: function($$v) {
+                                _vm.reg_email = $$v
+                              },
+                              expression: "reg_email"
+                            }
+                          },
+                          [_vm._v("Почта")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-text-field",
+                          {
+                            attrs: { label: "пароль", type: "password" },
+                            model: {
+                              value: _vm.reg_password,
+                              callback: function($$v) {
+                                _vm.reg_password = $$v
+                              },
+                              expression: "reg_password"
+                            }
+                          },
+                          [_vm._v("Пароль")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "mr-4",
+                            attrs: { color: "success" },
+                            on: { click: _vm.register }
+                          },
+                          [_vm._v("Зарегистрироваться")]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]
+        : [
+            _vm._v(
+              "\n      вы вошли в аккаунт\n      " +
+                _vm._s(_vm.getInfoUser) +
+                "\n    "
+            )
+          ]
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -21045,87 +21079,111 @@ var render = function() {
       _c(
         "v-container",
         [
-          _c("div", { staticClass: "basket__title text-center" }, [
-            _vm._v("Корзина")
-          ]),
+          _vm.basketisNull
+            ? [
+                _c("div", { staticClass: "basket__title text-center" }, [
+                  _vm._v("Корзина")
+                ]),
+                _vm._v(" "),
+                _c("v-simple-table", {
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "default",
+                        fn: function() {
+                          return [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", { staticClass: "text-left" }, [
+                                  _vm._v("Название")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "text-left" }, [
+                                  _vm._v("Категория")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "text-left" }, [
+                                  _vm._v("Количество")
+                                ]),
+                                _vm._v(" "),
+                                _c("th", { staticClass: "text-left" }, [
+                                  _vm._v("цена")
+                                ]),
+                                _vm._v(" "),
+                                _c("th")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(_vm.basketItems, function(item, index) {
+                                return _c("tr", { key: item.name }, [
+                                  _c("td", [_vm._v(_vm._s(item.title))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(item.category))]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v("1")]),
+                                  _vm._v(" "),
+                                  _c("td", [_vm._v(_vm._s(item.price))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.deleteItemBasket(index)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Удалить")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ])
+                              }),
+                              0
+                            )
+                          ]
+                        },
+                        proxy: true
+                      }
+                    ],
+                    null,
+                    false,
+                    495752021
+                  )
+                })
+              ]
+            : [
+                _c(
+                  "div",
+                  { staticStyle: { "text-align": "center" } },
+                  [
+                    _vm._v("\n        Корзина Пуста перейдите в\n        "),
+                    _c("router-link", { attrs: { to: "/category" } }, [
+                      _vm._v("Категории")
+                    ])
+                  ],
+                  1
+                )
+              ],
           _vm._v(" "),
-          _c("v-simple-table", {
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function() {
-                  return [
-                    _c("thead", [
-                      _c("tr", [
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v(
-                            "\n                        Название\n                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v(
-                            "\n                        Категория\n                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v(
-                            "\n                        Количество\n                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v(
-                            "\n                        цена\n                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("th")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.basketItems, function(item, index) {
-                        return _c("tr", { key: item.name }, [
-                          _c("td", [_vm._v(_vm._s(item.title))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(item.category))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v("1")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(item.price))]),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            [
-                              _c(
-                                "v-btn",
-                                {
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.deleteItemBasket(index)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Удалить")]
-                              )
-                            ],
-                            1
-                          )
-                        ])
-                      }),
-                      0
-                    )
-                  ]
-                },
-                proxy: true
-              }
-            ])
-          })
+          _c(
+            "div",
+            { staticClass: "order", staticStyle: { "margin-top": "40px" } },
+            [
+              _vm.token
+                ? [_c("v-form", [_vm._v("\n        форма заказа\n      ")])]
+                : [_vm._v("\n        зарегестрируйтесь на сайте\n    ")]
+            ],
+            2
+          )
         ],
-        1
+        2
       )
     ],
     1
@@ -82442,6 +82500,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _vuexmodule_product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vuexmodule/product */ "./resources/js/plugins/vuexmodule/product.js");
 /* harmony import */ var _vuexmodule_basket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vuexmodule/basket */ "./resources/js/plugins/vuexmodule/basket.js");
+/* harmony import */ var _vuexmodule_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./vuexmodule/auth */ "./resources/js/plugins/vuexmodule/auth.js");
+
 
 
 
@@ -82450,9 +82510,82 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     product: _vuexmodule_product__WEBPACK_IMPORTED_MODULE_2__["default"],
-    basket: _vuexmodule_basket__WEBPACK_IMPORTED_MODULE_3__["default"]
+    basket: _vuexmodule_basket__WEBPACK_IMPORTED_MODULE_3__["default"],
+    auth: _vuexmodule_auth__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }));
+
+/***/ }),
+
+/***/ "./resources/js/plugins/vuexmodule/auth.js":
+/*!*************************************************!*\
+  !*** ./resources/js/plugins/vuexmodule/auth.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  actions: {
+    register: function register(ctx, auth) {
+      //register
+      axios.post("http://127.0.0.1:8000/api/auth/register", {
+        name: auth.name,
+        email: auth.email,
+        password: auth.password
+      }).then(function (res) {
+        return console.log(res);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    login: function login(ctx, auth) {
+      //login
+      axios.post("/api/auth/login", {
+        email: auth.email,
+        password: auth.password
+      }).then(function (res) {
+        console.log(res);
+        ctx.commit('updateToken', res.data.token_type + ' ' + res.data.access_token);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    user: function user(ctx, token) {
+      //login
+      axios.post("/api/auth/user", {}, {
+        headers: {
+          Authorization: token
+        }
+      }).then(function (res) {
+        return ctx.commit('updateUserInfo', res);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    }
+  },
+  mutations: {
+    updateToken: function updateToken(state, token) {
+      state.token = token;
+    },
+    updateUserInfo: function updateUserInfo(state, info) {
+      state.info = info;
+    }
+  },
+  state: {
+    token: null,
+    info: null
+  },
+  getters: {
+    getToken: function getToken(state) {
+      return state.token;
+    },
+    getUserInfo: function getUserInfo(state) {
+      return state.info;
+    }
+  }
+});
 
 /***/ }),
 
@@ -82564,8 +82697,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Руслан\openserve\OpenServer\domains\BestComputer\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Руслан\openserve\OpenServer\domains\BestComputer\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\OpenServer\domains\BestComputer\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OpenServer\domains\BestComputer\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
