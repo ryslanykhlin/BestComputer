@@ -13,6 +13,9 @@
         >
           {{ item.title }}
         </v-btn>
+        <v-btn text @click="drawer = false" to="admin" v-if="isAdmin">
+          Админ панель
+        </v-btn>
       </v-toolbar-items>
       <router-link to="/basket" style="margin-right: 20px; margin-left: 10px">
         <v-badge overlap :content="String(basketCount)">
@@ -34,6 +37,13 @@
               </v-btn>
             </v-list-item-title>
           </v-list-item>
+          <v-list-item v-if="isAdmin">
+            <v-list-item-title>
+              <v-btn text to="admin" @click="drawer = false">
+                Админ панель
+              </v-btn>
+            </v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -47,6 +57,9 @@ export default {
     basketCount() {
       return this.$store.getters.getbasketCount;
     },
+    isAdmin(){
+        return this.$store.getters.getIsAdmin ?? false;
+    }
   },
   data: () => {
     return {

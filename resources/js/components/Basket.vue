@@ -35,7 +35,10 @@
       <div class="order" style="margin-top:40px">
       <template v-if="token">
         <v-form>
-          форма заказа
+          <v-text-field label="имя" v-model="name"></v-text-field>
+          <v-text-field label="телефон" v-model="tell"></v-text-field>
+          <v-text-field label="адресс" v-model="adress"></v-text-field>
+          <v-btn color="primary" @click="addOrder">Оформить заказ</v-btn>
         </v-form>
       </template>
       <template v-else>
@@ -48,6 +51,13 @@
 
 <script>
 export default {
+  data(){
+    return {
+      name:'',
+      tell:'',
+      adress:''
+    }
+  },
   computed: {
     basketItems() {
       return this.$store.getters.getBasketItem;
@@ -63,6 +73,14 @@ export default {
     deleteItemBasket(index) {
       this.$store.dispatch("deleteProductItem", index);
     },
+    addOrder(){
+      axios.post('/api/orders/add',{
+        name:this.name,
+        tell:this.tell,
+        adress:this.adress
+      })
+      .then(res => console.log(res));
+    }
   },
 };
 </script>

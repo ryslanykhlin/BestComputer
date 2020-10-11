@@ -28,7 +28,10 @@ export default {
             //login
             axios
             .post("/api/auth/user",{},{headers:{Authorization:token}})
-            .then(res => ctx.commit('updateUserInfo',res))
+            .then(res => {
+                ctx.commit('updateUserInfo',res);
+                ctx.commit('updateIsAdmin',res.data.user.is_admin)
+            })
             .catch(error => console.log(error));
         }
     },
@@ -38,11 +41,15 @@ export default {
         },
         updateUserInfo(state,info){
             state.info = info
+        },
+        updateIsAdmin(state,is_admin){
+            state.isAdmin = is_admin
         }
     },
     state: {
         token : null,
         info:null,
+        isAdmin:false,
     },
     getters: {
         getToken(state){
@@ -50,6 +57,9 @@ export default {
         },
         getUserInfo(state){
             return state.info;
+        },
+        getIsAdmin(state){
+            return state.isAdmin;
         }
     }
 }

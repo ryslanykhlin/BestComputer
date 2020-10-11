@@ -28,3 +28,9 @@ Route::prefix('auth')->group(function() {
     //is auth
     Route::post('user', 'App\Http\Controllers\AuthController@user');
 });
+
+Route::prefix('orders')->group(function(){
+    Route::post('add','App\Http\Controllers\ordersController@addOrder');
+
+    Route::post('getAll','App\Http\Controllers\ordersController@getOrders');
+});
