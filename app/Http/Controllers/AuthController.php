@@ -39,7 +39,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (!$token = Auth::attempt($credentials)) {
-            return response()->json(['error' => $token], 401);
+            return response()->json(['error' => 'true'], 200);
         }
 
         return $this->respondWithToken($token);
@@ -53,6 +53,7 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         return response()->json([
+            'error' => 'false',
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
